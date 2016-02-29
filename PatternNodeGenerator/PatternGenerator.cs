@@ -49,7 +49,7 @@ public static class {node.Name}PatternExtensions {{
                 ExtensionMethodHeader(
                     $"Add{m.Name}Pattern", node.Type,
                     _ => "Pattern propertyPattern",
-                    t => $@"if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match))");
+                    t => $@"if(propertyPattern != null) pattern.AddCondition(({t} node, MatchContext match) => propertyPattern.DoMatch(node.{m.SyntaxProperty.Name}, match))");
             // TODO: SyntaxNode overload
         }
 

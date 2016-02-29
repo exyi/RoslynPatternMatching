@@ -217,7 +217,7 @@ public static class SyntaxNodePatternPatternExtensions {
     public static Pattern<T> AddParentPattern<T>(this Pattern<T> pattern, Pattern propertyPattern)
         where T: Microsoft.CodeAnalysis.SyntaxNode
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((T node, MatchContext match) => propertyPattern.DoMatch(node.Parent, match));
         return pattern;
     }
 }
@@ -278,12 +278,12 @@ public static class AliasQualifiedNamePatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.AliasQualifiedNameSyntax> AddAliasPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.AliasQualifiedNameSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.AliasQualifiedNameSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Alias, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.AliasQualifiedNameSyntax> AddNamePattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.AliasQualifiedNameSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.AliasQualifiedNameSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Name, match));
         return pattern;
     }
 }
@@ -362,12 +362,12 @@ public static class AttributePatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.AttributeSyntax> AddNamePattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.AttributeSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.AttributeSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Name, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.AttributeSyntax> AddArgumentListPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.AttributeSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.AttributeSyntax node, MatchContext match) => propertyPattern.DoMatch(node.ArgumentList, match));
         return pattern;
     }
 }
@@ -503,7 +503,7 @@ public static class LocalDeclarationStatementPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.LocalDeclarationStatementSyntax> AddDeclarationPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.LocalDeclarationStatementSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.LocalDeclarationStatementSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Declaration, match));
         return pattern;
     }
 }
@@ -615,17 +615,17 @@ public static class DelegateDeclarationPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.DelegateDeclarationSyntax> AddReturnTypePattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.DelegateDeclarationSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.DelegateDeclarationSyntax node, MatchContext match) => propertyPattern.DoMatch(node.ReturnType, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.DelegateDeclarationSyntax> AddTypeParameterListPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.DelegateDeclarationSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.DelegateDeclarationSyntax node, MatchContext match) => propertyPattern.DoMatch(node.TypeParameterList, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.DelegateDeclarationSyntax> AddParameterListPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.DelegateDeclarationSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.DelegateDeclarationSyntax node, MatchContext match) => propertyPattern.DoMatch(node.ParameterList, match));
         return pattern;
     }
 }
@@ -722,7 +722,7 @@ public static class ExpressionStatementPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ExpressionStatementSyntax> AddExpressionPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ExpressionStatementSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.ExpressionStatementSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Expression, match));
         return pattern;
     }
 }
@@ -764,7 +764,7 @@ public static class GenericNamePatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.GenericNameSyntax> AddTypeArgumentListPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.GenericNameSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.GenericNameSyntax node, MatchContext match) => propertyPattern.DoMatch(node.TypeArgumentList, match));
         return pattern;
     }
 }
@@ -866,27 +866,27 @@ public static class PropertyDeclarationPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.PropertyDeclarationSyntax> AddTypePattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.PropertyDeclarationSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.PropertyDeclarationSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Type, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.PropertyDeclarationSyntax> AddExplicitInterfaceSpecifierPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.PropertyDeclarationSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.PropertyDeclarationSyntax node, MatchContext match) => propertyPattern.DoMatch(node.ExplicitInterfaceSpecifier, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.PropertyDeclarationSyntax> AddAccessorListPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.PropertyDeclarationSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.PropertyDeclarationSyntax node, MatchContext match) => propertyPattern.DoMatch(node.AccessorList, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.PropertyDeclarationSyntax> AddExpressionBodyPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.PropertyDeclarationSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.PropertyDeclarationSyntax node, MatchContext match) => propertyPattern.DoMatch(node.ExpressionBody, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.PropertyDeclarationSyntax> AddInitializerPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.PropertyDeclarationSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.PropertyDeclarationSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Initializer, match));
         return pattern;
     }
 }
@@ -948,17 +948,17 @@ public static class AnonymousMethodExpressionPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.AnonymousMethodExpressionSyntax> AddBlockPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.AnonymousMethodExpressionSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.AnonymousMethodExpressionSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Block, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.AnonymousMethodExpressionSyntax> AddParameterListPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.AnonymousMethodExpressionSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.AnonymousMethodExpressionSyntax node, MatchContext match) => propertyPattern.DoMatch(node.ParameterList, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.AnonymousMethodExpressionSyntax> AddBodyPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.AnonymousMethodExpressionSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.AnonymousMethodExpressionSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Body, match));
         return pattern;
     }
 }
@@ -1060,27 +1060,27 @@ public static class IndexerDeclarationPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.IndexerDeclarationSyntax> AddTypePattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.IndexerDeclarationSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.IndexerDeclarationSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Type, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.IndexerDeclarationSyntax> AddExplicitInterfaceSpecifierPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.IndexerDeclarationSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.IndexerDeclarationSyntax node, MatchContext match) => propertyPattern.DoMatch(node.ExplicitInterfaceSpecifier, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.IndexerDeclarationSyntax> AddParameterListPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.IndexerDeclarationSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.IndexerDeclarationSyntax node, MatchContext match) => propertyPattern.DoMatch(node.ParameterList, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.IndexerDeclarationSyntax> AddAccessorListPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.IndexerDeclarationSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.IndexerDeclarationSyntax node, MatchContext match) => propertyPattern.DoMatch(node.AccessorList, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.IndexerDeclarationSyntax> AddExpressionBodyPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.IndexerDeclarationSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.IndexerDeclarationSyntax node, MatchContext match) => propertyPattern.DoMatch(node.ExpressionBody, match));
         return pattern;
     }
 }
@@ -1212,32 +1212,32 @@ public static class MethodDeclarationPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.MethodDeclarationSyntax> AddReturnTypePattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.MethodDeclarationSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.MethodDeclarationSyntax node, MatchContext match) => propertyPattern.DoMatch(node.ReturnType, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.MethodDeclarationSyntax> AddExplicitInterfaceSpecifierPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.MethodDeclarationSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.MethodDeclarationSyntax node, MatchContext match) => propertyPattern.DoMatch(node.ExplicitInterfaceSpecifier, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.MethodDeclarationSyntax> AddTypeParameterListPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.MethodDeclarationSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.MethodDeclarationSyntax node, MatchContext match) => propertyPattern.DoMatch(node.TypeParameterList, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.MethodDeclarationSyntax> AddParameterListPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.MethodDeclarationSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.MethodDeclarationSyntax node, MatchContext match) => propertyPattern.DoMatch(node.ParameterList, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.MethodDeclarationSyntax> AddBodyPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.MethodDeclarationSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.MethodDeclarationSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Body, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.MethodDeclarationSyntax> AddExpressionBodyPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.MethodDeclarationSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.MethodDeclarationSyntax node, MatchContext match) => propertyPattern.DoMatch(node.ExpressionBody, match));
         return pattern;
     }
 }
@@ -1329,7 +1329,7 @@ public static class NamespaceDeclarationPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.NamespaceDeclarationSyntax> AddNamePattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.NamespaceDeclarationSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.NamespaceDeclarationSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Name, match));
         return pattern;
     }
 }
@@ -1447,12 +1447,12 @@ public static class ParameterPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ParameterSyntax> AddTypePattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ParameterSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.ParameterSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Type, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ParameterSyntax> AddDefaultPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ParameterSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.ParameterSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Default, match));
         return pattern;
     }
 }
@@ -1494,12 +1494,12 @@ public static class QualifiedNamePatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.QualifiedNameSyntax> AddLeftPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.QualifiedNameSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.QualifiedNameSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Left, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.QualifiedNameSyntax> AddRightPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.QualifiedNameSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.QualifiedNameSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Right, match));
         return pattern;
     }
 }
@@ -1610,7 +1610,7 @@ public static class TypeDeclarationPatternPatternExtensions {
     public static Pattern<T> AddTypeParameterListPattern<T>(this Pattern<T> pattern, Pattern propertyPattern)
         where T: Microsoft.CodeAnalysis.CSharp.Syntax.TypeDeclarationSyntax
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((T node, MatchContext match) => propertyPattern.DoMatch(node.TypeParameterList, match));
         return pattern;
     }
 }
@@ -1732,7 +1732,7 @@ public static class ArrayTypePatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ArrayTypeSyntax> AddElementTypePattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ArrayTypeSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.ArrayTypeSyntax node, MatchContext match) => propertyPattern.DoMatch(node.ElementType, match));
         return pattern;
     }
 }
@@ -1764,7 +1764,7 @@ public static class PointerTypePatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.PointerTypeSyntax> AddElementTypePattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.PointerTypeSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.PointerTypeSyntax node, MatchContext match) => propertyPattern.DoMatch(node.ElementType, match));
         return pattern;
     }
 }
@@ -1796,7 +1796,7 @@ public static class NullableTypePatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.NullableTypeSyntax> AddElementTypePattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.NullableTypeSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.NullableTypeSyntax node, MatchContext match) => propertyPattern.DoMatch(node.ElementType, match));
         return pattern;
     }
 }
@@ -1862,7 +1862,7 @@ public static class ParenthesizedExpressionPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ParenthesizedExpressionSyntax> AddExpressionPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ParenthesizedExpressionSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.ParenthesizedExpressionSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Expression, match));
         return pattern;
     }
 }
@@ -1894,7 +1894,7 @@ public static class PrefixUnaryExpressionPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.PrefixUnaryExpressionSyntax> AddOperandPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.PrefixUnaryExpressionSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.PrefixUnaryExpressionSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Operand, match));
         return pattern;
     }
 }
@@ -1926,7 +1926,7 @@ public static class AwaitExpressionPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.AwaitExpressionSyntax> AddExpressionPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.AwaitExpressionSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.AwaitExpressionSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Expression, match));
         return pattern;
     }
 }
@@ -1958,7 +1958,7 @@ public static class PostfixUnaryExpressionPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.PostfixUnaryExpressionSyntax> AddOperandPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.PostfixUnaryExpressionSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.PostfixUnaryExpressionSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Operand, match));
         return pattern;
     }
 }
@@ -2000,12 +2000,12 @@ public static class MemberAccessExpressionPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.MemberAccessExpressionSyntax> AddExpressionPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.MemberAccessExpressionSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.MemberAccessExpressionSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Expression, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.MemberAccessExpressionSyntax> AddNamePattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.MemberAccessExpressionSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.MemberAccessExpressionSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Name, match));
         return pattern;
     }
 }
@@ -2047,12 +2047,12 @@ public static class ConditionalAccessExpressionPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ConditionalAccessExpressionSyntax> AddExpressionPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ConditionalAccessExpressionSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.ConditionalAccessExpressionSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Expression, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ConditionalAccessExpressionSyntax> AddWhenNotNullPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ConditionalAccessExpressionSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.ConditionalAccessExpressionSyntax node, MatchContext match) => propertyPattern.DoMatch(node.WhenNotNull, match));
         return pattern;
     }
 }
@@ -2084,7 +2084,7 @@ public static class MemberBindingExpressionPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.MemberBindingExpressionSyntax> AddNamePattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.MemberBindingExpressionSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.MemberBindingExpressionSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Name, match));
         return pattern;
     }
 }
@@ -2106,7 +2106,7 @@ public static class ElementBindingExpressionPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ElementBindingExpressionSyntax> AddArgumentListPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ElementBindingExpressionSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.ElementBindingExpressionSyntax node, MatchContext match) => propertyPattern.DoMatch(node.ArgumentList, match));
         return pattern;
     }
 }
@@ -2128,7 +2128,7 @@ public static class ImplicitElementAccessPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ImplicitElementAccessSyntax> AddArgumentListPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ImplicitElementAccessSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.ImplicitElementAccessSyntax node, MatchContext match) => propertyPattern.DoMatch(node.ArgumentList, match));
         return pattern;
     }
 }
@@ -2170,12 +2170,12 @@ public static class BinaryExpressionPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.BinaryExpressionSyntax> AddLeftPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.BinaryExpressionSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.BinaryExpressionSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Left, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.BinaryExpressionSyntax> AddRightPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.BinaryExpressionSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.BinaryExpressionSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Right, match));
         return pattern;
     }
 }
@@ -2217,12 +2217,12 @@ public static class AssignmentExpressionPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.AssignmentExpressionSyntax> AddLeftPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.AssignmentExpressionSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.AssignmentExpressionSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Left, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.AssignmentExpressionSyntax> AddRightPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.AssignmentExpressionSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.AssignmentExpressionSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Right, match));
         return pattern;
     }
 }
@@ -2284,17 +2284,17 @@ public static class ConditionalExpressionPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ConditionalExpressionSyntax> AddConditionPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ConditionalExpressionSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.ConditionalExpressionSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Condition, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ConditionalExpressionSyntax> AddWhenTruePattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ConditionalExpressionSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.ConditionalExpressionSyntax node, MatchContext match) => propertyPattern.DoMatch(node.WhenTrue, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ConditionalExpressionSyntax> AddWhenFalsePattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ConditionalExpressionSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.ConditionalExpressionSyntax node, MatchContext match) => propertyPattern.DoMatch(node.WhenFalse, match));
         return pattern;
     }
 }
@@ -2404,7 +2404,7 @@ public static class MakeRefExpressionPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.MakeRefExpressionSyntax> AddExpressionPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.MakeRefExpressionSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.MakeRefExpressionSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Expression, match));
         return pattern;
     }
 }
@@ -2456,7 +2456,7 @@ public static class RefTypeExpressionPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.RefTypeExpressionSyntax> AddExpressionPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.RefTypeExpressionSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.RefTypeExpressionSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Expression, match));
         return pattern;
     }
 }
@@ -2528,12 +2528,12 @@ public static class RefValueExpressionPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.RefValueExpressionSyntax> AddExpressionPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.RefValueExpressionSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.RefValueExpressionSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Expression, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.RefValueExpressionSyntax> AddTypePattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.RefValueExpressionSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.RefValueExpressionSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Type, match));
         return pattern;
     }
 }
@@ -2585,7 +2585,7 @@ public static class CheckedExpressionPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.CheckedExpressionSyntax> AddExpressionPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.CheckedExpressionSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.CheckedExpressionSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Expression, match));
         return pattern;
     }
 }
@@ -2637,7 +2637,7 @@ public static class DefaultExpressionPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.DefaultExpressionSyntax> AddTypePattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.DefaultExpressionSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.DefaultExpressionSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Type, match));
         return pattern;
     }
 }
@@ -2689,7 +2689,7 @@ public static class TypeOfExpressionPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.TypeOfExpressionSyntax> AddTypePattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.TypeOfExpressionSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.TypeOfExpressionSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Type, match));
         return pattern;
     }
 }
@@ -2741,7 +2741,7 @@ public static class SizeOfExpressionPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.SizeOfExpressionSyntax> AddTypePattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.SizeOfExpressionSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.SizeOfExpressionSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Type, match));
         return pattern;
     }
 }
@@ -2773,12 +2773,12 @@ public static class InvocationExpressionPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.InvocationExpressionSyntax> AddExpressionPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.InvocationExpressionSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.InvocationExpressionSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Expression, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.InvocationExpressionSyntax> AddArgumentListPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.InvocationExpressionSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.InvocationExpressionSyntax node, MatchContext match) => propertyPattern.DoMatch(node.ArgumentList, match));
         return pattern;
     }
 }
@@ -2810,12 +2810,12 @@ public static class ElementAccessExpressionPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ElementAccessExpressionSyntax> AddExpressionPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ElementAccessExpressionSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.ElementAccessExpressionSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Expression, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ElementAccessExpressionSyntax> AddArgumentListPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ElementAccessExpressionSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.ElementAccessExpressionSyntax node, MatchContext match) => propertyPattern.DoMatch(node.ArgumentList, match));
         return pattern;
     }
 }
@@ -2950,12 +2950,12 @@ public static class ArgumentPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ArgumentSyntax> AddNameColonPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ArgumentSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.ArgumentSyntax node, MatchContext match) => propertyPattern.DoMatch(node.NameColon, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ArgumentSyntax> AddExpressionPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ArgumentSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.ArgumentSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Expression, match));
         return pattern;
     }
 }
@@ -2987,7 +2987,7 @@ public static class NameColonPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.NameColonSyntax> AddNamePattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.NameColonSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.NameColonSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Name, match));
         return pattern;
     }
 }
@@ -3039,12 +3039,12 @@ public static class CastExpressionPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.CastExpressionSyntax> AddTypePattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.CastExpressionSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.CastExpressionSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Type, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.CastExpressionSyntax> AddExpressionPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.CastExpressionSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.CastExpressionSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Expression, match));
         return pattern;
     }
 }
@@ -3081,7 +3081,7 @@ public static class AnonymousFunctionExpressionPatternPatternExtensions {
     public static Pattern<T> AddBodyPattern<T>(this Pattern<T> pattern, Pattern propertyPattern)
         where T: Microsoft.CodeAnalysis.CSharp.Syntax.AnonymousFunctionExpressionSyntax
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((T node, MatchContext match) => propertyPattern.DoMatch(node.Body, match));
         return pattern;
     }
 }
@@ -3152,12 +3152,12 @@ public static class SimpleLambdaExpressionPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.SimpleLambdaExpressionSyntax> AddParameterPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.SimpleLambdaExpressionSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.SimpleLambdaExpressionSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Parameter, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.SimpleLambdaExpressionSyntax> AddBodyPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.SimpleLambdaExpressionSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.SimpleLambdaExpressionSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Body, match));
         return pattern;
     }
 }
@@ -3209,12 +3209,12 @@ public static class ParenthesizedLambdaExpressionPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ParenthesizedLambdaExpressionSyntax> AddParameterListPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ParenthesizedLambdaExpressionSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.ParenthesizedLambdaExpressionSyntax node, MatchContext match) => propertyPattern.DoMatch(node.ParameterList, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ParenthesizedLambdaExpressionSyntax> AddBodyPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ParenthesizedLambdaExpressionSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.ParenthesizedLambdaExpressionSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Body, match));
         return pattern;
     }
 }
@@ -3303,17 +3303,17 @@ public static class ObjectCreationExpressionPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ObjectCreationExpressionSyntax> AddTypePattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ObjectCreationExpressionSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.ObjectCreationExpressionSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Type, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ObjectCreationExpressionSyntax> AddArgumentListPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ObjectCreationExpressionSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.ObjectCreationExpressionSyntax node, MatchContext match) => propertyPattern.DoMatch(node.ArgumentList, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ObjectCreationExpressionSyntax> AddInitializerPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ObjectCreationExpressionSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.ObjectCreationExpressionSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Initializer, match));
         return pattern;
     }
 }
@@ -3345,12 +3345,12 @@ public static class AnonymousObjectMemberDeclaratorPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.AnonymousObjectMemberDeclaratorSyntax> AddNameEqualsPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.AnonymousObjectMemberDeclaratorSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.AnonymousObjectMemberDeclaratorSyntax node, MatchContext match) => propertyPattern.DoMatch(node.NameEquals, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.AnonymousObjectMemberDeclaratorSyntax> AddExpressionPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.AnonymousObjectMemberDeclaratorSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.AnonymousObjectMemberDeclaratorSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Expression, match));
         return pattern;
     }
 }
@@ -3439,12 +3439,12 @@ public static class ArrayCreationExpressionPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ArrayCreationExpressionSyntax> AddTypePattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ArrayCreationExpressionSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.ArrayCreationExpressionSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Type, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ArrayCreationExpressionSyntax> AddInitializerPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ArrayCreationExpressionSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.ArrayCreationExpressionSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Initializer, match));
         return pattern;
     }
 }
@@ -3506,7 +3506,7 @@ public static class ImplicitArrayCreationExpressionPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ImplicitArrayCreationExpressionSyntax> AddInitializerPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ImplicitArrayCreationExpressionSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.ImplicitArrayCreationExpressionSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Initializer, match));
         return pattern;
     }
 }
@@ -3538,7 +3538,7 @@ public static class StackAllocArrayCreationExpressionPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.StackAllocArrayCreationExpressionSyntax> AddTypePattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.StackAllocArrayCreationExpressionSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.StackAllocArrayCreationExpressionSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Type, match));
         return pattern;
     }
 }
@@ -3584,12 +3584,12 @@ public static class QueryExpressionPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.QueryExpressionSyntax> AddFromClausePattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.QueryExpressionSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.QueryExpressionSyntax node, MatchContext match) => propertyPattern.DoMatch(node.FromClause, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.QueryExpressionSyntax> AddBodyPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.QueryExpressionSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.QueryExpressionSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Body, match));
         return pattern;
     }
 }
@@ -3631,12 +3631,12 @@ public static class QueryBodyPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.QueryBodySyntax> AddSelectOrGroupPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.QueryBodySyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.QueryBodySyntax node, MatchContext match) => propertyPattern.DoMatch(node.SelectOrGroup, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.QueryBodySyntax> AddContinuationPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.QueryBodySyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.QueryBodySyntax node, MatchContext match) => propertyPattern.DoMatch(node.Continuation, match));
         return pattern;
     }
 }
@@ -3698,12 +3698,12 @@ public static class FromClausePatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.FromClauseSyntax> AddTypePattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.FromClauseSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.FromClauseSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Type, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.FromClauseSyntax> AddExpressionPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.FromClauseSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.FromClauseSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Expression, match));
         return pattern;
     }
 }
@@ -3755,7 +3755,7 @@ public static class LetClausePatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.LetClauseSyntax> AddExpressionPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.LetClauseSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.LetClauseSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Expression, match));
         return pattern;
     }
 }
@@ -3867,27 +3867,27 @@ public static class JoinClausePatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.JoinClauseSyntax> AddTypePattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.JoinClauseSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.JoinClauseSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Type, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.JoinClauseSyntax> AddInExpressionPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.JoinClauseSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.JoinClauseSyntax node, MatchContext match) => propertyPattern.DoMatch(node.InExpression, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.JoinClauseSyntax> AddLeftExpressionPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.JoinClauseSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.JoinClauseSyntax node, MatchContext match) => propertyPattern.DoMatch(node.LeftExpression, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.JoinClauseSyntax> AddRightExpressionPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.JoinClauseSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.JoinClauseSyntax node, MatchContext match) => propertyPattern.DoMatch(node.RightExpression, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.JoinClauseSyntax> AddIntoPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.JoinClauseSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.JoinClauseSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Into, match));
         return pattern;
     }
 }
@@ -3946,7 +3946,7 @@ public static class WhereClausePatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.WhereClauseSyntax> AddConditionPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.WhereClauseSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.WhereClauseSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Condition, match));
         return pattern;
     }
 }
@@ -4005,7 +4005,7 @@ public static class OrderingPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.OrderingSyntax> AddExpressionPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.OrderingSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.OrderingSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Expression, match));
         return pattern;
     }
 }
@@ -4037,7 +4037,7 @@ public static class SelectClausePatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.SelectClauseSyntax> AddExpressionPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.SelectClauseSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.SelectClauseSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Expression, match));
         return pattern;
     }
 }
@@ -4089,12 +4089,12 @@ public static class GroupClausePatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.GroupClauseSyntax> AddGroupExpressionPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.GroupClauseSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.GroupClauseSyntax node, MatchContext match) => propertyPattern.DoMatch(node.GroupExpression, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.GroupClauseSyntax> AddByExpressionPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.GroupClauseSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.GroupClauseSyntax node, MatchContext match) => propertyPattern.DoMatch(node.ByExpression, match));
         return pattern;
     }
 }
@@ -4136,7 +4136,7 @@ public static class QueryContinuationPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.QueryContinuationSyntax> AddBodyPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.QueryContinuationSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.QueryContinuationSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Body, match));
         return pattern;
     }
 }
@@ -4276,17 +4276,17 @@ public static class InterpolationPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.InterpolationSyntax> AddExpressionPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.InterpolationSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.InterpolationSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Expression, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.InterpolationSyntax> AddAlignmentClausePattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.InterpolationSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.InterpolationSyntax node, MatchContext match) => propertyPattern.DoMatch(node.AlignmentClause, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.InterpolationSyntax> AddFormatClausePattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.InterpolationSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.InterpolationSyntax node, MatchContext match) => propertyPattern.DoMatch(node.FormatClause, match));
         return pattern;
     }
 }
@@ -4318,7 +4318,7 @@ public static class InterpolationAlignmentClausePatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.InterpolationAlignmentClauseSyntax> AddValuePattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.InterpolationAlignmentClauseSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.InterpolationAlignmentClauseSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Value, match));
         return pattern;
     }
 }
@@ -4367,7 +4367,7 @@ public static class GlobalStatementPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.GlobalStatementSyntax> AddStatementPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.GlobalStatementSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.GlobalStatementSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Statement, match));
         return pattern;
     }
 }
@@ -4443,7 +4443,7 @@ public static class VariableDeclarationPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.VariableDeclarationSyntax> AddTypePattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.VariableDeclarationSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.VariableDeclarationSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Type, match));
         return pattern;
     }
 }
@@ -4485,12 +4485,12 @@ public static class VariableDeclaratorPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.VariableDeclaratorSyntax> AddArgumentListPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.VariableDeclaratorSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.VariableDeclaratorSyntax node, MatchContext match) => propertyPattern.DoMatch(node.ArgumentList, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.VariableDeclaratorSyntax> AddInitializerPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.VariableDeclaratorSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.VariableDeclaratorSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Initializer, match));
         return pattern;
     }
 }
@@ -4522,7 +4522,7 @@ public static class EqualsValueClausePatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.EqualsValueClauseSyntax> AddValuePattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.EqualsValueClauseSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.EqualsValueClauseSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Value, match));
         return pattern;
     }
 }
@@ -4581,7 +4581,7 @@ public static class LabeledStatementPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.LabeledStatementSyntax> AddStatementPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.LabeledStatementSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.LabeledStatementSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Statement, match));
         return pattern;
     }
 }
@@ -4633,7 +4633,7 @@ public static class GotoStatementPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.GotoStatementSyntax> AddExpressionPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.GotoStatementSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.GotoStatementSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Expression, match));
         return pattern;
     }
 }
@@ -4729,7 +4729,7 @@ public static class ReturnStatementPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ReturnStatementSyntax> AddExpressionPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ReturnStatementSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.ReturnStatementSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Expression, match));
         return pattern;
     }
 }
@@ -4771,7 +4771,7 @@ public static class ThrowStatementPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ThrowStatementSyntax> AddExpressionPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ThrowStatementSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.ThrowStatementSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Expression, match));
         return pattern;
     }
 }
@@ -4823,7 +4823,7 @@ public static class YieldStatementPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.YieldStatementSyntax> AddExpressionPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.YieldStatementSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.YieldStatementSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Expression, match));
         return pattern;
     }
 }
@@ -4885,12 +4885,12 @@ public static class WhileStatementPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.WhileStatementSyntax> AddConditionPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.WhileStatementSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.WhileStatementSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Condition, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.WhileStatementSyntax> AddStatementPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.WhileStatementSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.WhileStatementSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Statement, match));
         return pattern;
     }
 }
@@ -4972,12 +4972,12 @@ public static class DoStatementPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.DoStatementSyntax> AddStatementPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.DoStatementSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.DoStatementSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Statement, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.DoStatementSyntax> AddConditionPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.DoStatementSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.DoStatementSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Condition, match));
         return pattern;
     }
 }
@@ -5089,17 +5089,17 @@ public static class ForStatementPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ForStatementSyntax> AddDeclarationPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ForStatementSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.ForStatementSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Declaration, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ForStatementSyntax> AddConditionPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ForStatementSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.ForStatementSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Condition, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ForStatementSyntax> AddStatementPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ForStatementSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.ForStatementSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Statement, match));
         return pattern;
     }
 }
@@ -5191,17 +5191,17 @@ public static class ForEachStatementPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ForEachStatementSyntax> AddTypePattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ForEachStatementSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.ForEachStatementSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Type, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ForEachStatementSyntax> AddExpressionPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ForEachStatementSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.ForEachStatementSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Expression, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ForEachStatementSyntax> AddStatementPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ForEachStatementSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.ForEachStatementSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Statement, match));
         return pattern;
     }
 }
@@ -5273,17 +5273,17 @@ public static class UsingStatementPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.UsingStatementSyntax> AddDeclarationPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.UsingStatementSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.UsingStatementSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Declaration, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.UsingStatementSyntax> AddExpressionPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.UsingStatementSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.UsingStatementSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Expression, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.UsingStatementSyntax> AddStatementPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.UsingStatementSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.UsingStatementSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Statement, match));
         return pattern;
     }
 }
@@ -5345,12 +5345,12 @@ public static class FixedStatementPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.FixedStatementSyntax> AddDeclarationPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.FixedStatementSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.FixedStatementSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Declaration, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.FixedStatementSyntax> AddStatementPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.FixedStatementSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.FixedStatementSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Statement, match));
         return pattern;
     }
 }
@@ -5382,7 +5382,7 @@ public static class CheckedStatementPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.CheckedStatementSyntax> AddBlockPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.CheckedStatementSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.CheckedStatementSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Block, match));
         return pattern;
     }
 }
@@ -5414,7 +5414,7 @@ public static class UnsafeStatementPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.UnsafeStatementSyntax> AddBlockPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.UnsafeStatementSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.UnsafeStatementSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Block, match));
         return pattern;
     }
 }
@@ -5476,12 +5476,12 @@ public static class LockStatementPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.LockStatementSyntax> AddExpressionPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.LockStatementSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.LockStatementSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Expression, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.LockStatementSyntax> AddStatementPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.LockStatementSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.LockStatementSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Statement, match));
         return pattern;
     }
 }
@@ -5553,17 +5553,17 @@ public static class IfStatementPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.IfStatementSyntax> AddConditionPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.IfStatementSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.IfStatementSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Condition, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.IfStatementSyntax> AddStatementPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.IfStatementSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.IfStatementSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Statement, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.IfStatementSyntax> AddElsePattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.IfStatementSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.IfStatementSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Else, match));
         return pattern;
     }
 }
@@ -5595,7 +5595,7 @@ public static class ElseClausePatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ElseClauseSyntax> AddStatementPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ElseClauseSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.ElseClauseSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Statement, match));
         return pattern;
     }
 }
@@ -5677,7 +5677,7 @@ public static class SwitchStatementPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.SwitchStatementSyntax> AddExpressionPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.SwitchStatementSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.SwitchStatementSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Expression, match));
         return pattern;
     }
 }
@@ -5777,7 +5777,7 @@ public static class CaseSwitchLabelPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.CaseSwitchLabelSyntax> AddValuePattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.CaseSwitchLabelSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.CaseSwitchLabelSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Value, match));
         return pattern;
     }
 }
@@ -5856,12 +5856,12 @@ public static class TryStatementPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.TryStatementSyntax> AddBlockPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.TryStatementSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.TryStatementSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Block, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.TryStatementSyntax> AddFinallyPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.TryStatementSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.TryStatementSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Finally, match));
         return pattern;
     }
 }
@@ -5913,17 +5913,17 @@ public static class CatchClausePatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.CatchClauseSyntax> AddDeclarationPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.CatchClauseSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.CatchClauseSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Declaration, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.CatchClauseSyntax> AddFilterPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.CatchClauseSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.CatchClauseSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Filter, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.CatchClauseSyntax> AddBlockPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.CatchClauseSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.CatchClauseSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Block, match));
         return pattern;
     }
 }
@@ -5975,7 +5975,7 @@ public static class CatchDeclarationPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.CatchDeclarationSyntax> AddTypePattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.CatchDeclarationSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.CatchDeclarationSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Type, match));
         return pattern;
     }
 }
@@ -6027,7 +6027,7 @@ public static class CatchFilterClausePatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.CatchFilterClauseSyntax> AddFilterExpressionPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.CatchFilterClauseSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.CatchFilterClauseSyntax node, MatchContext match) => propertyPattern.DoMatch(node.FilterExpression, match));
         return pattern;
     }
 }
@@ -6059,7 +6059,7 @@ public static class FinallyClausePatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.FinallyClauseSyntax> AddBlockPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.FinallyClauseSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.FinallyClauseSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Block, match));
         return pattern;
     }
 }
@@ -6168,12 +6168,12 @@ public static class UsingDirectivePatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.UsingDirectiveSyntax> AddAliasPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.UsingDirectiveSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.UsingDirectiveSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Alias, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.UsingDirectiveSyntax> AddNamePattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.UsingDirectiveSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.UsingDirectiveSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Name, match));
         return pattern;
     }
 }
@@ -6232,7 +6232,7 @@ public static class AttributeListPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.AttributeListSyntax> AddTargetPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.AttributeListSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.AttributeListSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Target, match));
         return pattern;
     }
 }
@@ -6311,17 +6311,17 @@ public static class AttributeArgumentPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.AttributeArgumentSyntax> AddNameEqualsPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.AttributeArgumentSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.AttributeArgumentSyntax node, MatchContext match) => propertyPattern.DoMatch(node.NameEquals, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.AttributeArgumentSyntax> AddNameColonPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.AttributeArgumentSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.AttributeArgumentSyntax node, MatchContext match) => propertyPattern.DoMatch(node.NameColon, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.AttributeArgumentSyntax> AddExpressionPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.AttributeArgumentSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.AttributeArgumentSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Expression, match));
         return pattern;
     }
 }
@@ -6353,7 +6353,7 @@ public static class NameEqualsPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.NameEqualsSyntax> AddNamePattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.NameEqualsSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.NameEqualsSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Name, match));
         return pattern;
     }
 }
@@ -6524,7 +6524,7 @@ public static class BaseTypeDeclarationPatternPatternExtensions {
     public static Pattern<T> AddBaseListPattern<T>(this Pattern<T> pattern, Pattern propertyPattern)
         where T: Microsoft.CodeAnalysis.CSharp.Syntax.BaseTypeDeclarationSyntax
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((T node, MatchContext match) => propertyPattern.DoMatch(node.BaseList, match));
         return pattern;
     }
 }
@@ -6646,12 +6646,12 @@ public static class ClassDeclarationPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ClassDeclarationSyntax> AddTypeParameterListPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ClassDeclarationSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.ClassDeclarationSyntax node, MatchContext match) => propertyPattern.DoMatch(node.TypeParameterList, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ClassDeclarationSyntax> AddBaseListPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ClassDeclarationSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.ClassDeclarationSyntax node, MatchContext match) => propertyPattern.DoMatch(node.BaseList, match));
         return pattern;
     }
 }
@@ -6773,12 +6773,12 @@ public static class StructDeclarationPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.StructDeclarationSyntax> AddTypeParameterListPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.StructDeclarationSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.StructDeclarationSyntax node, MatchContext match) => propertyPattern.DoMatch(node.TypeParameterList, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.StructDeclarationSyntax> AddBaseListPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.StructDeclarationSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.StructDeclarationSyntax node, MatchContext match) => propertyPattern.DoMatch(node.BaseList, match));
         return pattern;
     }
 }
@@ -6900,12 +6900,12 @@ public static class InterfaceDeclarationPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.InterfaceDeclarationSyntax> AddTypeParameterListPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.InterfaceDeclarationSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.InterfaceDeclarationSyntax node, MatchContext match) => propertyPattern.DoMatch(node.TypeParameterList, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.InterfaceDeclarationSyntax> AddBaseListPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.InterfaceDeclarationSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.InterfaceDeclarationSyntax node, MatchContext match) => propertyPattern.DoMatch(node.BaseList, match));
         return pattern;
     }
 }
@@ -7007,7 +7007,7 @@ public static class EnumDeclarationPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.EnumDeclarationSyntax> AddBaseListPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.EnumDeclarationSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.EnumDeclarationSyntax node, MatchContext match) => propertyPattern.DoMatch(node.BaseList, match));
         return pattern;
     }
 }
@@ -7049,7 +7049,7 @@ public static class EnumMemberDeclarationPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.EnumMemberDeclarationSyntax> AddEqualsValuePattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.EnumMemberDeclarationSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.EnumMemberDeclarationSyntax node, MatchContext match) => propertyPattern.DoMatch(node.EqualsValue, match));
         return pattern;
     }
 }
@@ -7101,7 +7101,7 @@ public static class BaseTypePatternPatternExtensions {
     public static Pattern<T> AddTypePattern<T>(this Pattern<T> pattern, Pattern propertyPattern)
         where T: Microsoft.CodeAnalysis.CSharp.Syntax.BaseTypeSyntax
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((T node, MatchContext match) => propertyPattern.DoMatch(node.Type, match));
         return pattern;
     }
 }
@@ -7123,7 +7123,7 @@ public static class SimpleBaseTypePatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.SimpleBaseTypeSyntax> AddTypePattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.SimpleBaseTypeSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.SimpleBaseTypeSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Type, match));
         return pattern;
     }
 }
@@ -7175,7 +7175,7 @@ public static class TypeParameterConstraintClausePatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.TypeParameterConstraintClauseSyntax> AddNamePattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.TypeParameterConstraintClauseSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.TypeParameterConstraintClauseSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Name, match));
         return pattern;
     }
 }
@@ -7258,7 +7258,7 @@ public static class TypeConstraintPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.TypeConstraintSyntax> AddTypePattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.TypeConstraintSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.TypeConstraintSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Type, match));
         return pattern;
     }
 }
@@ -7319,7 +7319,7 @@ public static class BaseFieldDeclarationPatternPatternExtensions {
     public static Pattern<T> AddDeclarationPattern<T>(this Pattern<T> pattern, Pattern propertyPattern)
         where T: Microsoft.CodeAnalysis.CSharp.Syntax.BaseFieldDeclarationSyntax
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((T node, MatchContext match) => propertyPattern.DoMatch(node.Declaration, match));
         return pattern;
     }
 }
@@ -7371,7 +7371,7 @@ public static class FieldDeclarationPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.FieldDeclarationSyntax> AddDeclarationPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.FieldDeclarationSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.FieldDeclarationSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Declaration, match));
         return pattern;
     }
 }
@@ -7433,7 +7433,7 @@ public static class EventFieldDeclarationPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.EventFieldDeclarationSyntax> AddDeclarationPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.EventFieldDeclarationSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.EventFieldDeclarationSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Declaration, match));
         return pattern;
     }
 }
@@ -7465,7 +7465,7 @@ public static class ExplicitInterfaceSpecifierPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ExplicitInterfaceSpecifierSyntax> AddNamePattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ExplicitInterfaceSpecifierSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.ExplicitInterfaceSpecifierSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Name, match));
         return pattern;
     }
 }
@@ -7538,13 +7538,13 @@ public static class BaseMethodDeclarationPatternPatternExtensions {
     public static Pattern<T> AddParameterListPattern<T>(this Pattern<T> pattern, Pattern propertyPattern)
         where T: Microsoft.CodeAnalysis.CSharp.Syntax.BaseMethodDeclarationSyntax
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((T node, MatchContext match) => propertyPattern.DoMatch(node.ParameterList, match));
         return pattern;
     }
     public static Pattern<T> AddBodyPattern<T>(this Pattern<T> pattern, Pattern propertyPattern)
         where T: Microsoft.CodeAnalysis.CSharp.Syntax.BaseMethodDeclarationSyntax
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((T node, MatchContext match) => propertyPattern.DoMatch(node.Body, match));
         return pattern;
     }
 }
@@ -7646,22 +7646,22 @@ public static class OperatorDeclarationPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.OperatorDeclarationSyntax> AddReturnTypePattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.OperatorDeclarationSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.OperatorDeclarationSyntax node, MatchContext match) => propertyPattern.DoMatch(node.ReturnType, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.OperatorDeclarationSyntax> AddParameterListPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.OperatorDeclarationSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.OperatorDeclarationSyntax node, MatchContext match) => propertyPattern.DoMatch(node.ParameterList, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.OperatorDeclarationSyntax> AddBodyPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.OperatorDeclarationSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.OperatorDeclarationSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Body, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.OperatorDeclarationSyntax> AddExpressionBodyPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.OperatorDeclarationSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.OperatorDeclarationSyntax node, MatchContext match) => propertyPattern.DoMatch(node.ExpressionBody, match));
         return pattern;
     }
 }
@@ -7763,22 +7763,22 @@ public static class ConversionOperatorDeclarationPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ConversionOperatorDeclarationSyntax> AddTypePattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ConversionOperatorDeclarationSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.ConversionOperatorDeclarationSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Type, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ConversionOperatorDeclarationSyntax> AddParameterListPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ConversionOperatorDeclarationSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.ConversionOperatorDeclarationSyntax node, MatchContext match) => propertyPattern.DoMatch(node.ParameterList, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ConversionOperatorDeclarationSyntax> AddBodyPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ConversionOperatorDeclarationSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.ConversionOperatorDeclarationSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Body, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ConversionOperatorDeclarationSyntax> AddExpressionBodyPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ConversionOperatorDeclarationSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.ConversionOperatorDeclarationSyntax node, MatchContext match) => propertyPattern.DoMatch(node.ExpressionBody, match));
         return pattern;
     }
 }
@@ -7860,17 +7860,17 @@ public static class ConstructorDeclarationPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ConstructorDeclarationSyntax> AddParameterListPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ConstructorDeclarationSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.ConstructorDeclarationSyntax node, MatchContext match) => propertyPattern.DoMatch(node.ParameterList, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ConstructorDeclarationSyntax> AddInitializerPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ConstructorDeclarationSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.ConstructorDeclarationSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Initializer, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ConstructorDeclarationSyntax> AddBodyPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ConstructorDeclarationSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.ConstructorDeclarationSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Body, match));
         return pattern;
     }
 }
@@ -7912,7 +7912,7 @@ public static class ConstructorInitializerPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ConstructorInitializerSyntax> AddArgumentListPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ConstructorInitializerSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.ConstructorInitializerSyntax node, MatchContext match) => propertyPattern.DoMatch(node.ArgumentList, match));
         return pattern;
     }
 }
@@ -7994,12 +7994,12 @@ public static class DestructorDeclarationPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.DestructorDeclarationSyntax> AddParameterListPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.DestructorDeclarationSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.DestructorDeclarationSyntax node, MatchContext match) => propertyPattern.DoMatch(node.ParameterList, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.DestructorDeclarationSyntax> AddBodyPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.DestructorDeclarationSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.DestructorDeclarationSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Body, match));
         return pattern;
     }
 }
@@ -8072,19 +8072,19 @@ public static class BasePropertyDeclarationPatternPatternExtensions {
     public static Pattern<T> AddTypePattern<T>(this Pattern<T> pattern, Pattern propertyPattern)
         where T: Microsoft.CodeAnalysis.CSharp.Syntax.BasePropertyDeclarationSyntax
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((T node, MatchContext match) => propertyPattern.DoMatch(node.Type, match));
         return pattern;
     }
     public static Pattern<T> AddExplicitInterfaceSpecifierPattern<T>(this Pattern<T> pattern, Pattern propertyPattern)
         where T: Microsoft.CodeAnalysis.CSharp.Syntax.BasePropertyDeclarationSyntax
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((T node, MatchContext match) => propertyPattern.DoMatch(node.ExplicitInterfaceSpecifier, match));
         return pattern;
     }
     public static Pattern<T> AddAccessorListPattern<T>(this Pattern<T> pattern, Pattern propertyPattern)
         where T: Microsoft.CodeAnalysis.CSharp.Syntax.BasePropertyDeclarationSyntax
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((T node, MatchContext match) => propertyPattern.DoMatch(node.AccessorList, match));
         return pattern;
     }
 }
@@ -8116,7 +8116,7 @@ public static class ArrowExpressionClausePatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ArrowExpressionClauseSyntax> AddExpressionPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ArrowExpressionClauseSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.ArrowExpressionClauseSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Expression, match));
         return pattern;
     }
 }
@@ -8198,17 +8198,17 @@ public static class EventDeclarationPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.EventDeclarationSyntax> AddTypePattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.EventDeclarationSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.EventDeclarationSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Type, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.EventDeclarationSyntax> AddExplicitInterfaceSpecifierPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.EventDeclarationSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.EventDeclarationSyntax node, MatchContext match) => propertyPattern.DoMatch(node.ExplicitInterfaceSpecifier, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.EventDeclarationSyntax> AddAccessorListPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.EventDeclarationSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.EventDeclarationSyntax node, MatchContext match) => propertyPattern.DoMatch(node.AccessorList, match));
         return pattern;
     }
 }
@@ -8307,7 +8307,7 @@ public static class AccessorDeclarationPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.AccessorDeclarationSyntax> AddBodyPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.AccessorDeclarationSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.AccessorDeclarationSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Body, match));
         return pattern;
     }
 }
@@ -8405,7 +8405,7 @@ public static class IncompleteMemberPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.IncompleteMemberSyntax> AddTypePattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.IncompleteMemberSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.IncompleteMemberSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Type, match));
         return pattern;
     }
 }
@@ -8478,7 +8478,7 @@ public static class TypeCrefPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.TypeCrefSyntax> AddTypePattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.TypeCrefSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.TypeCrefSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Type, match));
         return pattern;
     }
 }
@@ -8520,12 +8520,12 @@ public static class QualifiedCrefPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.QualifiedCrefSyntax> AddContainerPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.QualifiedCrefSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.QualifiedCrefSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Container, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.QualifiedCrefSyntax> AddMemberPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.QualifiedCrefSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.QualifiedCrefSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Member, match));
         return pattern;
     }
 }
@@ -8564,12 +8564,12 @@ public static class NameMemberCrefPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.NameMemberCrefSyntax> AddNamePattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.NameMemberCrefSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.NameMemberCrefSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Name, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.NameMemberCrefSyntax> AddParametersPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.NameMemberCrefSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.NameMemberCrefSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Parameters, match));
         return pattern;
     }
 }
@@ -8601,7 +8601,7 @@ public static class IndexerMemberCrefPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.IndexerMemberCrefSyntax> AddParametersPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.IndexerMemberCrefSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.IndexerMemberCrefSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Parameters, match));
         return pattern;
     }
 }
@@ -8643,7 +8643,7 @@ public static class OperatorMemberCrefPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.OperatorMemberCrefSyntax> AddParametersPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.OperatorMemberCrefSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.OperatorMemberCrefSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Parameters, match));
         return pattern;
     }
 }
@@ -8695,12 +8695,12 @@ public static class ConversionOperatorMemberCrefPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ConversionOperatorMemberCrefSyntax> AddTypePattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ConversionOperatorMemberCrefSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.ConversionOperatorMemberCrefSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Type, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ConversionOperatorMemberCrefSyntax> AddParametersPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ConversionOperatorMemberCrefSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.ConversionOperatorMemberCrefSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Parameters, match));
         return pattern;
     }
 }
@@ -8825,7 +8825,7 @@ public static class CrefParameterPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.CrefParameterSyntax> AddTypePattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.CrefParameterSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.CrefParameterSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Type, match));
         return pattern;
     }
 }
@@ -8874,12 +8874,12 @@ public static class XmlElementPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.XmlElementSyntax> AddStartTagPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.XmlElementSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.XmlElementSyntax node, MatchContext match) => propertyPattern.DoMatch(node.StartTag, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.XmlElementSyntax> AddEndTagPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.XmlElementSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.XmlElementSyntax node, MatchContext match) => propertyPattern.DoMatch(node.EndTag, match));
         return pattern;
     }
 }
@@ -8931,7 +8931,7 @@ public static class XmlElementStartTagPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.XmlElementStartTagSyntax> AddNamePattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.XmlElementStartTagSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.XmlElementStartTagSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Name, match));
         return pattern;
     }
 }
@@ -8973,7 +8973,7 @@ public static class XmlElementEndTagPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.XmlElementEndTagSyntax> AddNamePattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.XmlElementEndTagSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.XmlElementEndTagSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Name, match));
         return pattern;
     }
 }
@@ -9025,7 +9025,7 @@ public static class XmlEmptyElementPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.XmlEmptyElementSyntax> AddNamePattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.XmlEmptyElementSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.XmlEmptyElementSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Name, match));
         return pattern;
     }
 }
@@ -9057,7 +9057,7 @@ public static class XmlNamePatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.XmlNameSyntax> AddPrefixPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.XmlNameSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.XmlNameSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Prefix, match));
         return pattern;
     }
 }
@@ -9145,7 +9145,7 @@ public static class XmlAttributePatternPatternExtensions {
     public static Pattern<T> AddNamePattern<T>(this Pattern<T> pattern, Pattern propertyPattern)
         where T: Microsoft.CodeAnalysis.CSharp.Syntax.XmlAttributeSyntax
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((T node, MatchContext match) => propertyPattern.DoMatch(node.Name, match));
         return pattern;
     }
 }
@@ -9207,7 +9207,7 @@ public static class XmlTextAttributePatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.XmlTextAttributeSyntax> AddNamePattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.XmlTextAttributeSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.XmlTextAttributeSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Name, match));
         return pattern;
     }
 }
@@ -9269,12 +9269,12 @@ public static class XmlCrefAttributePatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.XmlCrefAttributeSyntax> AddNamePattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.XmlCrefAttributeSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.XmlCrefAttributeSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Name, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.XmlCrefAttributeSyntax> AddCrefPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.XmlCrefAttributeSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.XmlCrefAttributeSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Cref, match));
         return pattern;
     }
 }
@@ -9336,12 +9336,12 @@ public static class XmlNameAttributePatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.XmlNameAttributeSyntax> AddNamePattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.XmlNameAttributeSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.XmlNameAttributeSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Name, match));
         return pattern;
     }
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.XmlNameAttributeSyntax> AddIdentifierPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.XmlNameAttributeSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.XmlNameAttributeSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Identifier, match));
         return pattern;
     }
 }
@@ -9447,7 +9447,7 @@ public static class XmlProcessingInstructionPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.XmlProcessingInstructionSyntax> AddNamePattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.XmlProcessingInstructionSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.XmlProcessingInstructionSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Name, match));
         return pattern;
     }
 }
@@ -9540,7 +9540,7 @@ public static class ConditionalDirectiveTriviaPatternPatternExtensions {
     public static Pattern<T> AddConditionPattern<T>(this Pattern<T> pattern, Pattern propertyPattern)
         where T: Microsoft.CodeAnalysis.CSharp.Syntax.ConditionalDirectiveTriviaSyntax
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((T node, MatchContext match) => propertyPattern.DoMatch(node.Condition, match));
         return pattern;
     }
 }
@@ -9622,7 +9622,7 @@ public static class IfDirectiveTriviaPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.IfDirectiveTriviaSyntax> AddConditionPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.IfDirectiveTriviaSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.IfDirectiveTriviaSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Condition, match));
         return pattern;
     }
 }
@@ -9704,7 +9704,7 @@ public static class ElifDirectiveTriviaPatternPatternExtensions {
 
     public static Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ElifDirectiveTriviaSyntax> AddConditionPattern(this Pattern<Microsoft.CodeAnalysis.CSharp.Syntax.ElifDirectiveTriviaSyntax> pattern, Pattern propertyPattern)
     {
-        if(propertyPattern != null) pattern.AddCondition((SyntaxNode node, MatchContext match) => propertyPattern.DoMatch(node, match));
+        if(propertyPattern != null) pattern.AddCondition((Microsoft.CodeAnalysis.CSharp.Syntax.ElifDirectiveTriviaSyntax node, MatchContext match) => propertyPattern.DoMatch(node.Condition, match));
         return pattern;
     }
 }

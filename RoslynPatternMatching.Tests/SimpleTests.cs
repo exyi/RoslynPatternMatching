@@ -14,6 +14,11 @@ namespace RoslynPatternMatching.Tests
         public void SimpleExpression()
         {
             var sn = SyntaxFactory.ParseExpression("x*5+x*4");
+
+            var pattern = new Pattern<BinaryExpressionSyntax>()
+                .AddIsKind(SyntaxKind.AddExpression)
+                .AddLeftPattern(new Pattern<BinaryExpressionSyntax>()
+                    .AddIsKind(SyntaxKind.MultiplyExpression));
         }
 
         [TestMethod]
