@@ -1,0 +1,16 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="C:\Users\exyi\Documents\visual studio 2015\Projects\RoslynPatternMatching\PatternNodeGenerator\bin\Debug\PatternNodeGenerator.dll" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+
+using System;
+using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp;
+namespace RoslynPatternMatching {
+	<#= PatternNodeGenerator.PatternGenerator.GenerateCode() #>
+}
+
